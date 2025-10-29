@@ -17,6 +17,8 @@ WeatherAI allows users to:
 
 This project demonstrates **end-to-end fullstack development**, **REST API design**, and **frontend-backend integration**.
 
+### Note: The backend is hosted on Render’s free tier, so it may take up to 1 minute to wake up after inactivity.
+
 ---
 
 ## 🗂️ Folder Structure
