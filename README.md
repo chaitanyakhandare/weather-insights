@@ -1,9 +1,4 @@
-Perfect ✅ — here’s your **final polished `README.md`**, properly formatted in **GitHub Markdown** (no extra backticks messing up rendering).
-Everything is styled to render beautifully on GitHub — headings, code blocks, folder structure, tables, and bold text all display correctly.
-
----
-
-# 🌦️ WeatherAI — Fullstack Weather & AI Insights App
+# 🌦️ Weather Insights — Fullstack Weather & AI Insights App
 
 A **fullstack web application** built with **Django (Backend)** and **React + Vite + TypeScript (Frontend)**.
 It provides **real-time weather data**, **AI-generated weather reports**, and an elegant dashboard interface.
