@@ -1,16 +1,11 @@
-Got it ✅ — you don’t need deployment info, just a **clean, professional README** that tells the HR team or reviewers **what your project does**, **how to run it locally**, and **what tech stack** you used.
-
-Here’s your **final version**, perfectly structured for a GitHub submission.
-It focuses purely on **local installation**, **project overview**, and **tech details**.
+Perfect ✅ — here’s your **final polished `README.md`**, properly formatted in **GitHub Markdown** (no extra backticks messing up rendering).
+Everything is styled to render beautifully on GitHub — headings, code blocks, folder structure, tables, and bold text all display correctly.
 
 ---
 
-## 🧾 `README.md`
-
-```md
 # 🌦️ WeatherAI — Fullstack Weather & AI Insights App
 
-A **fullstack web application** built with **Django (Backend)** and **React + Vite + TypeScript (Frontend)**.  
+A **fullstack web application** built with **Django (Backend)** and **React + Vite + TypeScript (Frontend)**.
 It provides **real-time weather data**, **AI-generated weather reports**, and an elegant dashboard interface.
 
 ---
@@ -18,11 +13,12 @@ It provides **real-time weather data**, **AI-generated weather reports**, and an
 ## 🧠 Project Overview
 
 WeatherAI allows users to:
-- 🌍 Add and manage cities  
-- 🌤️ Fetch **real-time weather data** using **WeatherAPI**  
-- 🤖 Generate **AI-powered weather insights** using **Gemini API**  
-- 💾 Store all data in a **Supabase PostgreSQL database**  
-- 📊 Visualize reports and weather stats in a modern UI  
+
+* 🌍 Add and manage cities
+* 🌤️ Fetch **real-time weather data** using **WeatherAPI**
+* 🤖 Generate **AI-powered weather insights** using **Gemini API**
+* 💾 Store all data in a **Supabase PostgreSQL database**
+* 📊 Visualize reports and weather stats in a modern UI
 
 This project demonstrates **end-to-end fullstack development**, **REST API design**, and **frontend-backend integration**.
 
@@ -31,7 +27,6 @@ This project demonstrates **end-to-end fullstack development**, **REST API desig
 ## 🗂️ Folder Structure
 
 ```
-
 project-root/
 ├── backend/
 │   ├── .venv/
@@ -46,23 +41,23 @@ project-root/
 │   └── .render-build.sh
 │
 └── frontend/
-│   └── src/
-│   └── public/
-│   └── package.json
-│   └── tsconfig.json
-│   └── vite.config.ts
-│   └── index.html
-
-````
+    ├── src/
+    ├── public/
+    ├── package.json
+    ├── tsconfig.json
+    ├── vite.config.ts
+    └── index.html
+```
 
 ---
 
 ## ⚙️ Backend Setup (Django)
 
 ### 1️⃣ Navigate to the backend folder
+
 ```bash
 cd backend
-````
+```
 
 ### 2️⃣ Create and activate a virtual environment
 
@@ -70,7 +65,7 @@ cd backend
 
 ```bash
 python -m venv .venv
-.venv\Scripts\Activate.ps1
+.venv\Scripts\activate
 ```
 
 **Mac/Linux:**
@@ -86,7 +81,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Create a `.env` file in the backend folder
+### 4️⃣ Create a `.env` file
 
 ### 5️⃣ Run migrations
 
@@ -100,14 +95,13 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-Backend will start on:
-➡️ **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
+Backend will start at → **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
 
 ---
 
 ## 💻 Frontend Setup (React + Vite + TypeScript)
 
-### 1️⃣ Navigate to frontend
+### 1️⃣ Navigate to the frontend folder
 
 ```bash
 cd ../frontend
@@ -125,8 +119,7 @@ npm install
 npm run dev
 ```
 
-Frontend will start on:
-➡️ **[http://localhost:5173](http://localhost:5173)**
+Frontend will start at → **[http://localhost:5173](http://localhost:5173)**
 
 ---
 
@@ -134,10 +127,10 @@ Frontend will start on:
 
 Make sure both servers are running:
 
-* Django → [http://127.0.0.1:8000](http://127.0.0.1:8000)
-* React → [http://localhost:5173](http://localhost:5173)
+* 🐍 **Django:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
+* ⚛️ **React:** [http://localhost:5173](http://localhost:5173)
 
-In `backend/root/settings.py`, verify this CORS configuration:
+In `backend/root/settings.py`, ensure this is configured:
 
 ```python
 CORS_ALLOWED_ORIGINS = [
@@ -146,7 +139,43 @@ CORS_ALLOWED_ORIGINS = [
 ]
 ```
 
-This ensures the frontend can communicate with the backend.
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file inside the **backend/** directory using the template below 👇
+
+### `.env.example`
+
+```env
+# ========================
+# 🔐 Django Configuration
+# ========================
+SECRET_KEY=your_django_secret_key_here
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
+
+# ========================
+# 🗄️ Database (Supabase PostgreSQL)
+# ========================
+DATABASE_URL=postgresql://postgres:yourpassword@yourproject.supabase.co:5432/postgres
+
+# ========================
+# 🌐 Supabase API
+# ========================
+SUPABASE_URL=https://yourproject.supabase.co
+SUPABASE_KEY=your_supabase_service_role_key
+
+# ========================
+# ☀️ Weather API
+# ========================
+WEATHER_API_KEY=your_weatherapi_key_here
+
+# ========================
+# 🤖 Gemini AI API
+# ========================
+GEMINI_API_KEY=your_gemini_api_key_here
+```
 
 ---
 
@@ -179,15 +208,15 @@ This ensures the frontend can communicate with the backend.
 When a city is selected:
 
 * Weather data is fetched from **WeatherAPI**
-* The data is sent to **Gemini AI**
-* Gemini generates a **detailed weather report**
-* The frontend displays both weather metrics & the AI’s narrative insights
+* Data is analyzed using **Gemini AI**
+* Gemini generates a **natural-language weather insight**
+* The frontend displays charts and the AI’s report elegantly
 
 ---
 
 ## 🧪 Testing Locally
 
-### Test the backend API
+### 🔍 Test the backend API
 
 Visit:
 
@@ -195,29 +224,10 @@ Visit:
 http://127.0.0.1:8000/fetch/?city=London
 ```
 
-### Test the full app
+### 🌐 Test the full app
 
 Run both servers and open:
 
 ```
 http://localhost:5173
 ```
-
----
-
-## 📸 (Optional) Screenshots
-
-*Add screenshots of your dashboard or reports if available.*
-
----
-
-✅ **Summary — This README includes:**
-- Clear project description  
-- Setup guide for backend & frontend  
-- How to run locally  
-- Environment variable info  
-- API endpoints  
-- Tech stack overview  
-- Author section  
-
----
