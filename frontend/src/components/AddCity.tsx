@@ -1,5 +1,5 @@
 import { useState } from "react";
-import API from "../Api";
+import API from "../api";
 
 interface AddCityProps {
     onAdded: () => void;

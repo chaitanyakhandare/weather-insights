@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import API from "../Api";
+import API from "../api";
 import ReportHistory from "./ReportHistory";
 import { Trash2, MapPin, Search } from "lucide-react";
 import WeatherReport from "./WeatherReport";
@@ -38,9 +38,18 @@ interface WeatherReportProps {
     };
 }
 
+interface WeatherSummary {
+    temp_c: number;
+    condition: string;
+    humidity: number;
+    wind_kph: number;
+    pressure_mb: number;
+    uv?: number;
+}
+
 interface AIReportData {
     selected_city: string;
-    weather_data: Record<string, any>;
+    weather_data: Record<string, WeatherSummary>;
     ai_report: string;
 }
 
@@ -101,29 +110,31 @@ export default function CityList() {
             const cityWeather = res.data.weather_data[selectedCity.name];
             if (cityWeather) {
                 setWeatherData({
-                    location: {
-                        name: selectedCity.name,
-                        region: "",
-                        country: "",
-                        localtime: new Date().toLocaleString(),
-                    },
-                    current: {
-                        temp_c: cityWeather.temp_c,
-                        feelslike_c: cityWeather.temp_c,
-                        humidity: cityWeather.humidity,
-                        wind_kph: cityWeather.wind_kph,
-                        wind_dir: "",
-                        pressure_mb: cityWeather.pressure_mb,
-                        vis_km: 0,
-                        uv: cityWeather.uv,
-                        condition: {
-                            text: cityWeather.condition,
-                            icon: "",
+                    data: {
+                        location: {
+                            name: selectedCity.name,
+                            region: "",
+                            country: "",
+                            localtime: new Date().toLocaleString(),
                         },
-                        precip_mm: 0,
-                        dewpoint_c: 0,
-                        cloud: 0,
-                        gust_kph: 0,
+                        current: {
+                            temp_c: cityWeather.temp_c,
+                            feelslike_c: cityWeather.temp_c,
+                            humidity: cityWeather.humidity,
+                            wind_kph: cityWeather.wind_kph,
+                            wind_dir: "",
+                            pressure_mb: cityWeather.pressure_mb,
+                            vis_km: 0,
+                            uv: cityWeather.uv,
+                            condition: {
+                                text: cityWeather.condition,
+                                icon: "",
+                            },
+                            precip_mm: 0,
+                            dewpoint_c: 0,
+                            cloud: 0,
+                            gust_kph: 0,
+                        },
                     },
                 });
             }
@@ -250,7 +261,7 @@ export default function CityList() {
                     <div className="bg-white rounded-3xl shadow-xl border border-gray-100 flex items-center justify-center">
                         {selectedCity ? (
                             weatherData ? (
-                                <WeatherReport data={weatherData} refresh={fetchWeather} />
+                                <WeatherReport data={weatherData.data} />
                             ) : (
                                 <div className="text-center p-12">
                                     <div className="w-24 h-24 bg-linear-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -287,7 +298,6 @@ export default function CityList() {
                             ) : (
                                 <ReportHistory
                                     city={selectedCity}
-                                    refresh={fetchCities}
                                     latestReport={aiReportData}
                                 />
                             )}
