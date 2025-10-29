@@ -149,7 +149,9 @@ export default function CityList() {
 
 
     useEffect(() => {
-        fetchWeather();
+        if (selectedCity) {
+            fetchWeather();
+        }
     }, [selectedCity]);
 
     useEffect(() => {
@@ -258,17 +260,29 @@ export default function CityList() {
                         </div>
                     </div>
 
-                    <div className="bg-white rounded-3xl shadow-xl border border-gray-100 flex items-center justify-center">
+                    <div className="bg-white rounded-3xl shadow-xl border border-gray-100 flex items-center justify-center min-h-[400px] transition-all duration-300">
                         {selectedCity ? (
-                            weatherData ? (
-                                <WeatherReport data={weatherData.data} />
-                            ) : (
-                                <div className="text-center p-12">
+                            reportLoading ? (
+                                <div className="text-center p-12 animate-pulse">
                                     <div className="w-24 h-24 bg-linear-to-br from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
                                         <MapPin className="w-12 h-12 text-blue-500" />
                                     </div>
-                                    <h3 className="text-xl font-semibold text-gray-700 mb-2">Loading Weather Data...</h3>
-                                    <p className="text-gray-500">Please wait while we fetch the latest report.</p>
+                                    <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                                        Fetching Weather Data for {selectedCity.name.charAt(0).toUpperCase() + selectedCity.name.slice(1)}...
+                                    </h3>
+                                    <p className="text-gray-500">Please wait a few seconds ⏳</p>
+                                </div>
+                            ) : weatherData ? (
+                                <WeatherReport data={weatherData.data} />
+                            ) : (
+                                <div className="text-center p-12">
+                                    <div className="w-24 h-24 bg-linear-to-br from-red-50 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                                        <MapPin className="w-12 h-12 text-red-500" />
+                                    </div>
+                                    <h3 className="text-xl font-semibold text-gray-700 mb-2">
+                                        Unable to fetch weather data
+                                    </h3>
+                                    <p className="text-gray-500">Please try again in a moment.</p>
                                 </div>
                             )
                         ) : (
@@ -277,10 +291,13 @@ export default function CityList() {
                                     <MapPin className="w-12 h-12 text-blue-500" />
                                 </div>
                                 <h3 className="text-xl font-semibold text-gray-700 mb-2">Select a City</h3>
-                                <p className="text-gray-500">Choose a city from the list to view its weather report</p>
+                                <p className="text-gray-500">
+                                    Choose a city from the list to view its weather report
+                                </p>
                             </div>
                         )}
                     </div>
+
 
                 </div>
 

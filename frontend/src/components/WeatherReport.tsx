@@ -31,12 +31,12 @@ interface WeatherReportProps {
 
 export default function WeatherReport({ data }: WeatherReportProps) {
     if (!data || !data.location || !data.current) {
-        return (
-            <div className="text-center text-red-400 font-medium py-10">
-                No weather data available. Please select a city.
-            </div>
-        );
-    }
+    return (
+        <div className="text-center text-gray-500 font-medium py-10 animate-pulse">
+            Fetching latest weather data...
+        </div>
+    );
+}
     const { location, current } = data;
 
 
